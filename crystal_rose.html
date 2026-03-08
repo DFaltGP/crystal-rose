@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/icon" href="favicon.ico">
+<title>Homenagem - Dia das Mulheres</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg-color: #080808;
+    --accent-pink: rgba(255, 182, 193, 0.4);
+    --text-main: #ffffff;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    background: radial-gradient(circle at center, #1a1a1a 0%, #080808 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    overflow: hidden;
+}
+
+.scene {
+    perspective: 1200px;
+    text-align: center;
+}
+
+.rosa-container {
+    position: relative;
+    z-index: 1;
+    transform-style: preserve-3d;
+    animation: emerge 3.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.rosa-img {
+    max-width: 450px;
+    width: 80vw;
+    filter: drop-shadow(0 0 20px var(--accent-pink));
+    animation: floating 6s ease-in-out 3.5s infinite alternate;
+}
+
+.content {
+    margin-top: -40px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: textReveal 2s ease-out 2.5s forwards;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 100;
+    font-style: italic;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+
+    background: linear-gradient(to bottom, #fff 40%, #999 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #bbbbbb;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #777;
+    font-weight: 300;
+}
+
+@keyframes emerge {
+    0% {
+        transform: translateZ(-800px) scale(0.3) rotateY(15deg);
+        opacity: 0;
+        filter: blur(20px) brightness(0);
+    }
+    100% {
+        transform: translateZ(0) scale(1) rotateY(0);
+        opacity: 1;
+        filter: blur(0) brightness(1.2);
+    }
+}
+
+@keyframes textReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floating {
+    from { transform: translateY(0) rotate(0deg); }
+    to { transform: translateY(-20px) rotate(3deg); }
+}
+
+.sparkle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.3;
+    pointer-events: none;
+    animation: twinkle 4s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.5); opacity: 0.7; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+
+    <div class="rosa-container">
+        <img src="crystal-rose.png"
+        alt="Rosa de Cristal"
+        class="rosa-img">
+    </div>
+
+    <div class="content">
+        <h1>Sua essência ilumina o mundo.</h1>
+
+        <div class="subtitle">
+            Hoje celebramos a força, a sensibilidade e a inspiração que existem em cada mulher.
+        </div>
+
+        <p>08 DE MARÇO • FELIZ DIA INTERNACIONAL DA MULHER</p>
+    </div>
+
+</div>
+
+<script>
+
+for (let i = 0; i < 20; i++) {
+
+    let sparkle = document.createElement('div');
+
+    sparkle.className = 'sparkle';
+
+    sparkle.style.width = Math.random() * 3 + 'px';
+    sparkle.style.height = sparkle.style.width;
+
+    sparkle.style.left = Math.random() * 100 + 'vw';
+    sparkle.style.top = Math.random() * 100 + 'vh';
+
+    sparkle.style.animationDelay = Math.random() * 5 + 's';
+
+    document.body.appendChild(sparkle);
+}
+
+</script>
+
+</body>
+</html>
